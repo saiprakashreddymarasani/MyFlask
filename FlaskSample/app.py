@@ -11,6 +11,7 @@ class User:
         self.set_password(password)
         self.temppass='password'
 
+    # generate hashpassword from generate_password_hash
     def set_password(self , password):
         self.password = generate_password_hash(password)
 
@@ -18,15 +19,18 @@ class User:
         print(check_password_hash(self.password , self.temppass))
         return check_password_hash(self.password , self.temppass)
 
+    # check for authentication
     def is_authenticated(self):
-        return  self.loginValidate()
+        return self.loginValidate()
 
+    # validate credentials based on username and password(hash). Username is provided ad admin
     def loginValidate(self):
         if self.username=="admin" and self.check_password(self.temppass):
             return True
         else:
             return False
 
+    # static method decorator so that I can call this method from class
     @staticmethod
     def logout():
         session['logged_in'] = False
@@ -45,7 +49,7 @@ def do_admin_login():
 
     password=request.form['password']
     username=request.form['username']
-    user = User(username=username,password=password)
+    user = User(username=username, password=password)
 
     if user.is_authenticated():
         session['logged_in'] = True
