@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<title>Sample Application</title>
+
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<head>
+<style>
+body {
+	padding-top: 60px;
+	padding-bottom: 100px;
+}
+</style>
+<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/bootstrap-responsive.css') }}" rel="stylesheet">
+
+</head>
+<body>
+{% block content %}{% endblock %}
+</body>
+</html>
+
